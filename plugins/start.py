@@ -159,7 +159,7 @@ async def not_joined(client: Client, message: Message):
 
 
 #----users-----
-@app.on_message(filters.command("users"))
+@Bot.on_message(filters.command("users"))
 async def users_cmd(client, message):
     xx = all_users()
     x = all_groups()
@@ -173,7 +173,7 @@ async def users_cmd(client, message):
 
 
 #-----broadcast-----
-@app.on_message(filters.command("bcast"))
+@Bot.on_message(filters.command("bcast"))
 async def bcast_cmd(client, message):
     allusers = users
     lel = await message.reply_text("`⚡️ Processing...`")
@@ -208,7 +208,7 @@ async def bcast_cmd(client, message):
 
 #------Autoaprove--------
 
-@app.on_chat_join_request(filters.group | filters.channel)
+@Bot.on_chat_join_request(filters.group | filters.channel)
 async def approve(client, message: ChatJoinRequest):
     chat = message.chat
     user = message.from_user
@@ -226,7 +226,7 @@ async def approve(client, message: ChatJoinRequest):
 
 #-------ping------
 
-@app.on_message(filters.command("ping"))
+@Bot.on_message(filters.command("ping"))
 async def ping_cmd(client, message):
     start_t = time.time()
     rm = await message.reply_text("...")
